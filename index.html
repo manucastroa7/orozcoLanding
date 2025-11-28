@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariana Orozco | Estrategias Digitales</title>
+    <meta name="description"
+        content="Transformo tu presencia online en un negocio rentable. Mentora de marketing y gestión de redes sociales.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            50: '#f8fafc',
+                            900: '#0f172a',
+                        },
+                        brand: {
+                            indigo: '#5b3e6b', // Deep Purple
+                            violet: '#9d5c8d', // Lighter Purple/Pink
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, #5b3e6b 0%, #9d5c8d 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #5b3e6b 0%, #9d5c8d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+    <header x-data="{ mobileMenuOpen: false }" class="fixed w-full top-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="font-display font-bold text-2xl tracking-tight hover:opacity-80 transition-opacity">
+                    Mariana Orozco<span class="text-indigo-600">.</span>
+                </a>
+
+                <nav class="hidden md:flex gap-8 items-center">
+                    <a href="#servicios"
+                        class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Servicios</a>
+                    <a href="#sobre-mi"
+                        class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Sobre mí</a>
+                    <a href="#contacto"
+                        class="px-5 py-2.5 rounded-full bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20">
+                        Contacto
+                    </a>
+                </nav>
+
+                <button @click="mobileMenuOpen = !mobileMenuOpen"
+                    class="md:hidden text-slate-900 focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-xl" x-show="!mobileMenuOpen"></i>
+                    <i class="fa-solid fa-xmark text-xl" x-show="mobileMenuOpen" x-cloak></i>
+                </button>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-2"
+            class="md:hidden absolute top-20 left-0 w-full bg-white border-b border-slate-100 shadow-xl" x-cloak>
+            <div class="flex flex-col p-6 space-y-4">
+                <a href="#servicios" @click="mobileMenuOpen = false"
+                    class="text-lg font-medium text-slate-900">Servicios</a>
+                <a href="#sobre-mi" @click="mobileMenuOpen = false" class="text-lg font-medium text-slate-900">Sobre
+                    mí</a>
+                <a href="#contacto" @click="mobileMenuOpen = false"
+                    class="text-lg font-medium text-indigo-600">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="pt-32 pb-20 lg:pt-40 lg:pb-32 px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+                <div class="order-1 lg:order-1 space-y-8 relative z-10">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold uppercase tracking-wide">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
+                        </span>
+                        Disponible para nuevos proyectos
+                    </div>
+
+                    <h1 class="font-display font-bold text-5xl lg:text-7xl leading-[1.1] tracking-tight text-slate-900">
+                        Transformá tu contenido con <span class="text-gradient">videos que cautivan.</span>
+                    </h1>
+
+                    <p class="text-lg text-slate-600 leading-relaxed max-w-lg">
+                        Ayudo a marcas y emprendedores a traducir su valor en estrategias visuales que convierten
+                        seguidores en clientes.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a href="#contacto"
+                            class="inline-flex justify-center items-center px-8 py-4 rounded-full bg-gradient-primary text-white font-medium shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/40 hover:-translate-y-1 transition-all duration-300">
+                            Trabajar juntos
+                            <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                        <a href="#recursos"
+                            class="inline-flex justify-center items-center px-8 py-4 rounded-full bg-white border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 hover:border-slate-300 transition-all duration-300">
+                            Ver portfolio
+                        </a>
+                    </div>
+
+                    <div class="pt-6 flex items-center gap-4 text-sm text-slate-500">
+                        <div class="flex -space-x-3">
+                            <img class="w-10 h-10 rounded-full border-2 border-slate-50 object-cover"
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64"
+                                alt="Cliente Feliz">
+                            <img class="w-10 h-10 rounded-full border-2 border-slate-50 object-cover"
+                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64"
+                                alt="Cliente Feliz">
+                            <img class="w-10 h-10 rounded-full border-2 border-slate-50 object-cover"
+                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=64&h=64"
+                                alt="Cliente Feliz">
+                        </div>
+                        <p class="font-medium"><span class="text-slate-900 font-bold">+150 marcas</span> potenciadas</p>
+                    </div>
+                </div>
+
+                <div class="order-2 lg:order-2 relative lg:h-auto flex justify-center items-center mt-8 lg:mt-0">
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-indigo-100 via-purple-100 to-white rounded-full blur-3xl -z-10 opacity-60">
+                    </div>
+
+                    <div class="relative z-10 group">
+                        <div
+                            class="absolute inset-0 bg-slate-900 rounded-[2rem] rotate-3 opacity-5 group-hover:rotate-6 transition-transform duration-500">
+                        </div>
+
+                        <img src="assets/hero-portrait-v2.png" alt="Mariana Orozco - Estratega Digital"
+                            class="relative w-full max-w-md mx-auto rounded-[2rem] shadow-2xl object-cover aspect-[3/4] hover:scale-[1.01] transition-transform duration-500 bg-slate-200">
+
+                        <div
+                            class="absolute -bottom-6 -left-4 md:-left-12 bg-white p-4 pr-8 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4 animate-[bounce_3s_infinite]">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-green-600 text-xl">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Resultados</p>
+                                <p class="text-lg font-bold text-slate-900">+127% Alcance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="servicios" class="py-20 px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-slate-900 mb-4">Mis Servicios</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Soluciones personalizadas para potenciar tu marca.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
+                <div
+                    class="md:col-span-2 md:row-span-2 bg-white rounded-2xl p-8 lg:p-10 shadow-lg border border-slate-100 card-hover flex flex-col justify-between relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-indigo-50 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xl mb-6 shadow-lg shadow-indigo-500/30">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-2xl lg:text-3xl text-slate-900 mb-4">Grabación de Videos
+                            por Jornada</h3>
+                        <p class="text-slate-600 text-lg mb-8 max-w-md">Realizo grabaciones de hasta 6 horas en
+                            locaciones variadas, adaptándome a tus necesidades para crear contenido de alto impacto.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3 text-slate-700"><i
+                                    class="fa-solid fa-check text-indigo-600"></i> Cobertura de eventos</li>
+                            <li class="flex items-center gap-3 text-slate-700"><i
+                                    class="fa-solid fa-check text-indigo-600"></i> Contenido para redes</li>
+                            <li class="flex items-center gap-3 text-slate-700"><i
+                                    class="fa-solid fa-check text-indigo-600"></i> Calidad profesional</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto"
+                        class="relative z-10 inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-700 transition-colors">
+                        Consultar disponibilidad <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div
+                    class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 card-hover flex flex-col justify-between">
+                    <div>
+                        <div
+                            class="w-10 h-10 rounded-lg bg-violet-100 text-violet-600 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-pen-nib"></i></div>
+                        <h3 class="font-display font-bold text-xl text-slate-900 mb-2">Narrativa Visual</h3>
+                        <p class="text-slate-600 text-sm">Me gusta contar historias con un estilo auténtico, capturando
+                            momentos clave.</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 card-hover flex flex-col justify-between">
+                    <div>
+                        <div
+                            class="w-10 h-10 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <h3 class="font-display font-bold text-xl text-slate-900 mb-2">Edición</h3>
+                        <p class="text-slate-600 text-sm">Edición sencilla, con enfoque en detalles visuales y fluidez
+                            de la historia.</p>
+                    </div>
+                </div>
+                <div
+                    class="md:col-span-1 bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 shadow-lg card-hover text-white flex flex-col justify-center items-center text-center relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
+                    </div>
+                    <div class="relative z-10">
+                        <i class="fa-solid fa-graduation-cap text-3xl mb-4 text-indigo-400"></i>
+                        <h3 class="font-display font-bold text-xl mb-2">Academy</h3>
+                        <p class="text-slate-300 text-sm mb-4">Próximamente cursos y recursos.</p>
+                        <a href="#"
+                            class="text-sm font-medium text-white border-b border-indigo-400 pb-0.5 hover:text-indigo-300 transition-colors">Ver
+                            catálogo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-mi" class="py-20 bg-white border-y border-slate-100">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="font-display font-bold text-3xl lg:text-4xl text-slate-900 mb-6">Sobre Mí</h2>
+                        <div class="space-y-4 text-slate-600 text-lg">
+                            <p>Soy Mariana Orozco, estratega digital especializada en contenido visual. Mi misión es
+                                ayudar a marcas y emprendedores a contar su historia a través de videos profesionales y
+                                atractivos.</p>
+                            <p>Soy una apasionada por la creación de contenido visual y actualmente estoy incursionando
+                                en la videografía.</p>
+                            <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100 mt-6">
+                                <h4 class="font-bold text-indigo-900 mb-2"><i
+                                        class="fa-solid fa-thumbtack mr-2"></i>Diferenciación clave:</h4>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start gap-2 text-sm text-indigo-800"><i
+                                            class="fa-solid fa-video mt-1"></i> Habilidad en videografía y edición.</li>
+                                    <li class="flex items-start gap-2 text-sm text-indigo-800"><i
+                                            class="fa-solid fa-mobile-screen mt-1"></i> Especialización en formatos
+                                        Reels y TikTok.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div
+                            class="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl bg-slate-100 relative group rotate-2 hover:rotate-0 transition-all duration-500">
+                            <img src="assets/hero-portrait-v2.png" alt="Mariana Orozco Bio"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 lg:px-8">
+            <div
+                class="max-w-4xl mx-auto bg-slate-900 rounded-[2.5rem] p-12 lg:p-20 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-indigo-600 rounded-full blur-3xl opacity-20">
+                    </div>
+                    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-violet-600 rounded-full blur-3xl opacity-20">
+                    </div>
+                </div>
+                <div class="relative z-10">
+                    <h2 class="font-display font-bold text-3xl lg:text-5xl text-white mb-6">¿Lista para escalar tu
+                        negocio?</h2>
+                    <p class="text-slate-300 text-lg mb-10 max-w-2xl mx-auto">Agenda una llamada de descubrimiento
+                        gratuita de 15 minutos.</p>
+                    <a href="#contacto"
+                        class="inline-flex justify-center items-center px-8 py-4 rounded-full bg-white text-slate-900 font-bold hover:bg-indigo-50 transition-colors shadow-lg shadow-white/10">
+                        Agendar Llamada
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="https://api.whatsapp.com/send?phone=541127725804&text=Hola%20Mariana" target="_blank"
+        class="fixed bottom-8 right-8 z-50 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center text-white text-3xl shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 animate-bounce">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <footer class="bg-white pt-20 pb-10 border-t border-slate-100" id="contacto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 lg:col-span-2">
+                    <a href="#" class="font-display font-bold text-2xl tracking-tight text-slate-900 mb-6 block">
+                        Mariana Orozco<span class="text-indigo-600">.</span>
+                    </a>
+                    <p class="text-slate-500 max-w-sm mb-8">Ayudando a emprendedores a construir negocios digitales
+                        sostenibles.</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/marianaorozcodigital/#" target="_blank"
+                            class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-pink-50 hover:text-pink-600 transition-colors"><i
+                                class="fa-brands fa-instagram text-xl"></i></a>
+                        <a href="https://www.facebook.com/mariana.illanez" target="_blank"
+                            class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors"><i
+                                class="fa-brands fa-facebook-f text-xl"></i></a>
+                        <a href="https://www.tiktok.com/@maorozcoi" target="_blank"
+                            class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-slate-900 hover:text-white transition-colors"><i
+                                class="fa-brands fa-tiktok text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6">Servicios</h4>
+                    <ul class="space-y-4 text-slate-600">
+                        <li><a href="#" class="hover:text-indigo-600 transition-colors">Mentoria 1:1</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition-colors">Social Media</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition-colors">Workshops</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6">Legal</h4>
+                    <ul class="space-y-4 text-slate-600">
+                        <li><a href="#" class="hover:text-indigo-600 transition-colors">Privacidad</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition-colors">Términos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
+                <p>&copy; 2025 Mariana Orozco. Todos los derechos reservados.</p>
+                <p>Diseñado con <i class="fa-solid fa-heart text-red-400 mx-1"></i> en Ciudad de México.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
